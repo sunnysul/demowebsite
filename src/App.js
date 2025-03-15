@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import { Outlet } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
+import ScrollToTop from './components/ScrollToTop';
+
 
 function App() {
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <ScrollToTop/>
+      <Header />
+      <Outlet />
+      <Footer />
+    </>
+  )
 }
 
 export default App;
