@@ -1,155 +1,148 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { FaPhoneAlt, FaEnvelope, FaSun, FaChevronDown } from 'react-icons/fa';
-import '../css/Header.css';
+import { FaChevronDown, FaTimes, FaBars } from 'react-icons/fa';
+import logo from "../logo/Vasundhara.png";
+import "../css/Header.css"
 
 const Header = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState(null);
+    const navRef = useRef(null);
     const dropdownRef = useRef(null);
-    const menuRef = useRef(null);
 
-    const dropdownItemsAbout = [
-        { path: "/aboutus/overview", title: "Company Overview" },
-        { path: "/aboutus/mission", title: "Mission & Vision" },
-        { path: "/aboutus/history", title: "Our History" },
-        { path: "/aboutus/achievements", title: "Achievements" }
+    const dropdownItems = [
+        { path: "/aboutus/principle", title: "Our Principles" },
+        { path: "/aboutus/promise", title: "Our Promise" },
+        { path: "/aboutus/vision", title: "Vision Mission" },
+        { path: "/aboutus/values", title: "Our Values" }
     ];
 
     useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth > 768) {
-                closeAllMenus();
-            }
-        };
-
         const handleClickOutside = (event) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target) &&
-                menuRef.current && !menuRef.current.contains(event.target)) {
+            if (navRef.current && !navRef.current.contains(event.target)) {
                 closeAllMenus();
             }
         };
 
-        window.addEventListener('resize', handleResize);
+        const handleResize = () => {
+            if (window.innerWidth > 768) closeAllMenus();
+        };
+
         document.addEventListener('mousedown', handleClickOutside);
+        window.addEventListener('resize', handleResize);
 
         return () => {
-            window.removeEventListener('resize', handleResize);
             document.removeEventListener('mousedown', handleClickOutside);
+            window.removeEventListener('resize', handleResize);
         };
     }, []);
 
-    const toggleMenu = () => {
-        setIsMenuOpen(prev => !prev);
-        setActiveDropdown(null);
-    };
+    const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
     const closeAllMenus = () => {
-        setIsMenuOpen(false);
+        setIsMobileMenuOpen(false);
         setActiveDropdown(null);
     };
 
-    const handleDropdown = (dropdownName) => {
-        setActiveDropdown(prev => prev === dropdownName ? null : dropdownName);
+    const handleDropdownToggle = (dropdownName) => {
+        setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
     };
 
     return (
-        <>
-            {/* Top Contact Bar */}
-            <div className="top-bar">
-                <div className="container">
-                    <div className="top-content">
-                        <div className="contact-info">
-                            <div className="contact-item">
-                                <FaPhoneAlt className="icon" />
-                                <span>+91 98765 43210</span>
-                            </div>
-                            <div className="contact-item">
-                                <FaEnvelope className="icon" />
-                                <span>info@vasundharasolar.com</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <header className="header" ref={navRef}>
+            <nav className="nav container">
+                {/* Logo */}
+                <Link to="/" className="nav__logo" onClick={closeAllMenus}>
+                    <img src={logo} alt="Vasundhara Solar Solutions" />
+                </Link>
 
-            {/* Main Navigation */}
-            <header className="main-header sticky-top">
-                <div className="container">
-                    <nav className="navbar" ref={menuRef}>
-                        {/* Brand Logo */}
-                        <Link to="/" className="brand" onClick={closeAllMenus}>
-                            <FaSun className="logo-icon" />
-                            <span className="logo-text">
-                                VASUNDHARA
-                                <span className="logo-sub">Solar Solutions</span>
-                            </span>
-                        </Link>
+                {/* Desktop Navigation */}
+                <div className={`nav__menu ${isMobileMenuOpen ? 'show-menu' : ''}`}>
+                    {/* Close Button for Mobile */}
+                    <button 
+                        className="nav__close" 
+                        onClick={closeAllMenus}
+                        aria-label="Close menu"
+                    >
+                        <FaTimes />
+                    </button>
 
-                        {/* Navigation Links */}
-                        <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-                            <Link to="/" className="nav-link" onClick={closeAllMenus}>Home</Link>
+                    {/* Navigation Links */}
+                    <ul className="nav__list">
+                        <li className="nav__item">
+                            <Link to="/" className="nav__link" onClick={closeAllMenus}>
+                                Home
+                            </Link>
+                        </li>
 
-                            {/* About Us Section */}
-                            <div className="dropdown-container" ref={dropdownRef}>
-                                <div className="aboutus-wrapper">
-                                    <Link 
-                                        to="/aboutus" 
-                                        className="nav-link"
-                                        onClick={closeAllMenus}
-                                    >
-                                        About Us
-                                    </Link>
-                                    <button
-                                        className="dropdown-chevron-button"
-                                        onClick={() => handleDropdown('aboutus')}
-                                        aria-label="Toggle about us dropdown"
-                                    >
-                                        <FaChevronDown className={`dropdown-chevron ${activeDropdown === 'aboutus' ? 'active' : ''}`} />
-                                    </button>
-                                </div>
-                                <ul className={`dropdown-menu ${activeDropdown === 'aboutus' ? 'show' : ''}`}>
-                                    {dropdownItemsAbout.map((item, index) => (
-                                        <li key={index}>
-                                            <Link
-                                                to={item.path}
-                                                className="dropdown-item"
-                                                onClick={closeAllMenus}
-                                            >
-                                                {item.title}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-
-                            {/* Regular Links */}
-                            {['service', 'contact', 'gallery'].map((path) => (
-                                <Link
-                                    key={path}
-                                    to={`/${path}`}
-                                    className="nav-link"
+                        {/* About Us Dropdown */}
+                        <li 
+                            className="nav__item nav__dropdown"
+                            onMouseEnter={() => window.innerWidth > 768 && handleDropdownToggle('about')}
+                            onMouseLeave={() => window.innerWidth > 768 && handleDropdownToggle('about')}
+                        >
+                            <div className="nav__dropdown-header">
+                                <Link 
+                                    to="/aboutus" 
+                                    className="nav__link"
                                     onClick={closeAllMenus}
                                 >
-                                    {path.charAt(0).toUpperCase() + path.slice(1)}
+                                    About Us
                                 </Link>
-                            ))}
-                        </div>
+                                <button
+                                    className="nav__dropdown-trigger"
+                                    onClick={() => handleDropdownToggle('about')}
+                                    aria-expanded={activeDropdown === 'about'}
+                                    aria-label="Toggle dropdown"
+                                >
+                                    <FaChevronDown className={`icon ${activeDropdown === 'about' ? 'rotate' : ''}`} />
+                                </button>
+                            </div>
+                            
+                            <ul 
+                                className={`nav__submenu ${activeDropdown === 'about' ? 'show-dropdown' : ''}`}
+                                ref={dropdownRef}
+                            >
+                                {dropdownItems.map((item, index) => (
+                                    <li key={index} className="nav__subitem">
+                                        <Link
+                                            to={item.path}
+                                            className="nav__sublink"
+                                            onClick={closeAllMenus}
+                                        >
+                                            {item.title}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </li>
 
-                        {/* Mobile Menu Toggle */}
-                        <button
-                            className={`menu-toggle ${isMenuOpen ? 'active' : ''}`}
-                            onClick={toggleMenu}
-                            aria-label="Toggle navigation"
-                        >
-                            <span className="bar" />
-                            <span className="bar" />
-                            <span className="bar" />
-                        </button>
-                    </nav>
+                        {/* Other Navigation Items */}
+                        {['service', 'gallery', 'team', 'contact'].map((item) => (
+                            <li key={item} className="nav__item">
+                                <Link
+                                    to={`/${item}`}
+                                    className="nav__link"
+                                    onClick={closeAllMenus}
+                                >
+                                    {item.charAt(0).toUpperCase() + item.slice(1)}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
-            </header>
-        </>
+
+                {/* Mobile Menu Toggle */}
+                <button 
+                    className="nav__toggle"
+                    onClick={toggleMobileMenu}
+                    aria-label="Toggle navigation"
+                    aria-expanded={isMobileMenuOpen}
+                >
+                    <FaBars className="icon" />
+                </button>
+            </nav>
+        </header>
     );
 };
 

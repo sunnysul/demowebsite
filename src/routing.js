@@ -8,9 +8,9 @@ import HomePage from "./components/HomePage";
 import Contact from "./components/Contact";
 import Services from "./components/Services";
 import AboutUs from "./components/AboutUs";
-import ResidentialSolar from "./components/ResidentialSolar";
 import Gallery from "./components/Gallery";
-import ClientPage from "./components/ClientPage";
+import TeamPage from "./components/TeamPage";
+import OurPrinciples from "./components/OurPrinciples";
 
 
 const router = createBrowserRouter([
@@ -44,18 +44,19 @@ const router = createBrowserRouter([
             path: "/aboutus",
             element: <AboutUs/>
            },
-           {
-            path: "/residentail",
-            element : <ResidentialSolar/>
-           },
+          
            {
             path: "/gallery",
             element : <Gallery/>
            },
            {
-            path: "/client",
-            element : <ClientPage/>
+            path: "/team",
+            element : <TeamPage/>
            },
+        //    {
+        //     path :"/princliple",
+        //     element : <OurPrinciples/>
+        //    },
 
            
 

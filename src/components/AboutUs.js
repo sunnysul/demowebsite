@@ -7,28 +7,24 @@ import video from "../images/video.mp4"
 const AboutUs = () => {
     return (
         <div className="about-page">
-        {/* Hero Section with Video Background */}
-        <section className="about-hero">
-            <div className="video-container">
-                <video 
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline
-                    poster="https://assets.mixkit.co/videos/preview/mixkit-close-up-of-solar-panel-array-39758.png"
-                >
-                    <source src={video} type="video/mp4" />
-                </video>
-                {/* <div className="video-overlay"></div> */}
-            </div>
-            <div className="hero-content">
-                <h1>Empowering Tomorrow with Solar Innovation</h1>
-                <p>Harnessing sunlight to fuel sustainable progress worldwide</p>
-                {/* <div className="scroll-indicator">
-                    <span></span>
-                </div> */}
-            </div>
-        </section>
+            {/* Hero Section */}
+            <section className="about-hero">
+                <div className="video-container">
+                    <video 
+                        autoPlay 
+                        loop 
+                        muted 
+                        playsInline
+                        poster="https://assets.mixkit.co/videos/preview/mixkit-close-up-of-solar-panel-array-39758.png"
+                    >
+                        <source src={video} type="video/mp4" />
+                    </video>
+                </div>
+                <div className="hero-content">
+                    <h1>Empowering Tomorrow with Solar Innovation</h1>
+                    <p>Harnessing sunlight to fuel sustainable progress worldwide</p>
+                </div>
+            </section>
 
             {/* Company Overview */}
             <section className="company-overview">
@@ -38,31 +34,25 @@ const AboutUs = () => {
                             <FaSolarPanel className="tag-icon"/>
                             <span>About Us</span>
                         </div>
-                        <h2>Solar Energy Pioneers Since 2008</h2>
+                        <h2>Solar Energy Pioneers Since 2015</h2>
                         <p>
                             Vasundhara Solar Services leads the renewable revolution with cutting-edge photovoltaic solutions. 
-                            Our expertise spans residential installations to utility-scale solar farms, delivering clean energy 
-                            solutions across 3 continents.
+                            Our expertise spans industrial, commercial and residential installations to utility-scale solar projects, 
+                            delivering clean energy solutions.
                         </p>
                         <div className="achievements">
                             <div className="achievement-item">
-                                <div className="achievement-number">15+</div>
+                                <div className="achievement-number">10+</div>
                                 <div className="achievement-text">Years Experience</div>
                             </div>
                             <div className="achievement-item">
-                                <div className="achievement-number">5000+</div>
+                                <div className="achievement-number">700+</div>
                                 <div className="achievement-text">Projects Completed</div>
                             </div>
                         </div>
                     </div>
                     <div className="visual-element">
                         <img src={solarfarm} alt="Solar farm" className="featured-image"/>
-                        <div className="image-overlay">
-                            {/* <div className="overlay-content">
-                                <FaSun className="overlay-icon"/>
-                                <h3>Sustainable Energy Solutions</h3>
-                            </div> */}
-                        </div>
                     </div>
                 </div>
             </section>
@@ -116,14 +106,14 @@ const AboutUs = () => {
                         <div className="stat-item">
                             <FaSun className="stat-icon"/>
                             <div className="stat-content">
-                                <div className="stat-value">25K+</div>
+                                <div className="stat-value">200K+</div>
                                 <div className="stat-label">Panels Installed</div>
                             </div>
                         </div>
                         <div className="stat-item">
                             <FaChartLine className="stat-icon"/>
                             <div className="stat-content">
-                                <div className="stat-value">40%</div>
+                                <div className="stat-value">70%</div>
                                 <div className="stat-label">Cost Reduction</div>
                             </div>
                         </div>

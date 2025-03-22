@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -8,6 +9,22 @@ import residentialImg from "../images/residential.jpeg";
 import commercialImg from "../images/commercial.jpg";
 import industrialImg from "../images/industrial.jpeg";
 import smeImg from "../images/sme.jpeg";
+//logo
+import dhariwal from "../logo/dhariwal.avif";
+import graphite from "../logo/graphite.webp";
+import indiana from "../logo/indiana.jpeg";
+import kisanFeed from "../logo/kisan_feed.png";
+import piaggio from "../logo/piaggio.png";
+import ruby from "../logo/ruby.png";
+import shatayu from "../logo/shatayu.jpeg";
+import smAuto from "../logo/SM_auto.png";
+import sudharshan from "../logo/sudharshan.png";
+import ultraCorpo from "../logo/ultra_corpo.jpeg";
+import varadHP from "../logo/varad_HP.png";
+import varroc from "../logo/varroc.png";
+ import global from "../logo/Global.png";
+ import aurus from "../logo/auruspharma.png";
+
 import { 
   FaSolarPanel, FaChevronDown, FaClipboard, FaEnvelope, 
   FaUser, FaInstagram, FaLinkedin, FaTwitter, FaFacebook, 
@@ -33,27 +50,54 @@ const HomePage = () => {
     { icon: "🌍", title: "Eco-Friendly", description: "Zero carbon footprint solutions" },
     { icon: "⏱️", title: "Quick Turnaround", description: "Installation in 3-5 business days" }
   ];
+  const clients = [
+        dhariwal, graphite, indiana, kisanFeed, piaggio,
+        ruby, shatayu, smAuto, sudharshan, ultraCorpo,
+        varadHP, varroc,global,aurus,
+      ];
+      
+        const [slideClients] = useState([...clients, ...clients]);
 
-  const services = [
-    {
-      title: "Residential Solar",
-      description: "Tailored solar systems for homes",
-      image: residentialImg,
-      path: "/residential"
-    },
-    {
-      title: "Commercial Solar",
-      description: "Solar solutions for businesses",
-      image: commercialImg,
-      path: "/commercial"
-    },
-    {
-      title: "Industrial Solar",
-      description: "High-capacity industrial systems",
-      image: industrialImg,
-      path: "/industrial"
-    },
-  ];
+        const services = [
+          {
+            title: "Residential Solar",
+            description: "Tailored solar systems for homes",
+            image: residentialImg,
+            path: "/residential",
+            benefits: [
+              "25-year performance warranty",
+              "24/7 system monitoring",
+              "Federal tax credit eligibility",
+              "Energy independence"
+            ]
+          },
+          {
+            title: "Commercial Solar",
+            description: "Solar solutions for businesses",
+            image: commercialImg,
+            path: "/commercial",
+            benefits: [
+              "Commercial tax deductions",
+              "Reduced operational costs",
+              "Scalable energy solutions",
+              "Sustainability certifications"
+            ]
+          },
+          {
+            title: "Industrial Solar",
+            description: "High-capacity industrial systems",
+            image: industrialImg,
+            path: "/industrial",
+            benefits: [
+              "Megawatt-scale installations",
+              "Custom energy storage",
+              "Peak shaving solutions",
+              "Demand charge reduction"
+            ]
+          },
+        ];
+        
+         
 
   const [formData, setFormData] = useState({
     name: "",
@@ -112,18 +156,19 @@ const HomePage = () => {
         Sustainable, Reliable, and Cost-Effective Solar Solutions for Every Need
       </p>
       <p className="introduction-text">
-        At Vasundhara Solar Services (VSS), we are committed to delivering cutting-edge solar energy 
-        solutions that cater to residential, commercial, industrial, and SME requirements. Our 
-        comprehensive services are designed to meet your energy needs while ensuring maximum savings, 
-        optimal performance, and long-term sustainability.
+         At Vasundhara Solar Services (VSS), we are committed to delivering cutting-edge solar energy      
+         solutions that cater to residential, commercial, industrial, and SME requirements. Our 
+         comprehensive services are designed to meet your energy needs while ensuring maximum savings, 
+         optimal performance, and long-term sustainability.
+
       </p>
       <div className="stats-grid">
         <div className="stat-item">
-          <h3>2.5MW+</h3>
+          <h3>100MW+</h3>
           <p>Installed Capacity</p>
         </div>
         <div className="stat-item">
-          <h3>1500+</h3>
+          <h3>700+</h3>
           <p>Happy Clients</p>
         </div>
       </div>
@@ -132,50 +177,46 @@ const HomePage = () => {
 </section>
 
  {/* Services Section */}
-<section className="services-section">
-  <div className="container">
-    <div className="section-header">
-      <h2>Powering Your World with Solar</h2>
-      <p className="section-subtitle">Custom solutions for every energy need</p>
-      <div className="title-divider"></div>
-    </div>
-    <div className="services-grid">
-      {services.map((service, index) => (
-        <div className="service-card" key={index}>
-          <div className="card-inner">
-            <div className="card-front" style={{ backgroundImage: `url(${service.image})` }}>
-              <div className="image-overlay"></div>
-              <div className="card-content">
-                <FaSolarPanel className="service-icon" />
-                <h3>{service.title}</h3>
-                <div className="hover-indicator">
-                  <FaChevronDown className="bounce" />
+ <section className="services-section">
+      <div className="container">
+        <div className="section-header">
+          <h2>Powering Your World with Solar</h2>
+          <p className="section-subtitle">Custom solutions for every energy need</p>
+          <div className="title-divider"></div>
+        </div>
+        <div className="services-grid">
+          {services.map((service, index) => (
+            <div className="service-card" key={index}>
+              <div className="card-front" style={{ backgroundImage: `url(${service.image})` }}>
+                <div className="image-overlay"></div>
+                <h3>{service.title}</h3> 
+                <div className="card-content">
+                  {/* <FaSolarPanel className="service-icon" />
+                  <h3>{service.title}</h3> */}
+                </div>
+              </div>
+              <div className="card-back">
+                <div className="back-content">
+                  <p>{service.description}</p>
+                  <ul className="service-benefits">
+                    {service.benefits.map((benefit, i) => (
+                      <li key={i}><FaCheckCircle /> {benefit}</li>
+                    ))}
+                  </ul>
+                  {/* <button 
+                    className="service-cta"
+                    onClick={() => navigate(service.path)}
+                  >
+                    Explore Options
+                    <FaChevronDown className="cta-arrow" />
+                  </button> */}
                 </div>
               </div>
             </div>
-            <div className="card-back">
-              <div className="back-content">
-                <p>{service.description}</p>
-                <ul className="service-benefits">
-                  <li><FaCheckCircle /> 25-year warranty</li>
-                  <li><FaCheckCircle /> Smart monitoring</li>
-                  <li><FaCheckCircle /> Tax incentives</li>
-                </ul>
-                <button 
-                  className="service-cta"
-                  onClick={() => navigate(service.path)}
-                >
-                  Explore Options
-                  <FaChevronDown className="cta-arrow" />
-                </button>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </div>
+    </section>
 
           {/* Contact Section */}
           <section className="contact-section">
@@ -188,30 +229,30 @@ const HomePage = () => {
                   <FaMapMarkerAlt className="info-icon" />
                   <div>
                     <h4>Visit Us</h4>
-                    <p>123 Solar Street<br/>Energy City, EC 45678</p>
+                    {/* <p>123 Solar Street<br/>Energy City, EC 45678</p> */}
+                    <p>A/P: Bidal, Tal-Man,
+Dist-Satara, 415508
+Maharashtra, India</p>
                   </div>
                 </div>
                 <div className="info-item">
                   <FaPhone className="info-icon" />
                   <div>
                     <h4>Call Us</h4>
-                    <p>+1 (234) 567-8900<br/>Mon-Fri: 8AM - 6PM</p>
+                    {/* <p>+1 (234) 567-8900<br/>Mon-Fri: 8AM - 6PM</p> */}
+                    <p>+91 7757050168</p>
+                    <p> +91 9209768544</p>
                   </div>
                 </div>
                 <div className="info-item">
                   <FaEnvelope className="info-icon" />
                   <div>
                     <h4>Email Us</h4>
-                    <p>info@solarexample.com<br/>support@solarexample.com</p>
+                    <p>evasundharasolar@gmail.com</p>
                   </div>
                 </div>
               </div>
-              <div className="social-links">
-                <FaFacebook className="social-icon" />
-                <FaTwitter className="social-icon" />
-                <FaLinkedin className="social-icon" />
-                <FaInstagram className="social-icon" />
-              </div>
+            
             </div>
             <form className="contact-form" onSubmit={handleSubmit}>
               <h3>Quick Inquiry</h3>
@@ -247,7 +288,27 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-    </div>
+    {/* Client Section */}
+    <section className="clients-section">
+       <div className="container">
+         <h2 className="section-title">Our Valued Clients</h2>
+         <div className="clients-container">
+           <div className="clients-track">
+             {slideClients.map((client, index) => (
+              <div className="client-item" key={index}>
+                <img 
+                  src={client} 
+                  alt={`Client ${index + 1}`} 
+                  className="client-logo"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+     </div>
   );
 };
 

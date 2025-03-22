@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "../css/Contact.css";
 import contactVideo from "../images/contact.mp4";
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaSolarPanel } from "react-icons/fa";
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaLinkedin, FaInstagram, FaSolarPanel,FaWhatsapp } from "react-icons/fa";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -63,7 +63,9 @@ const Contact = () => {
                 <FaMapMarkerAlt />
               </div>
               <h3>Our Headquarters</h3>
-              <p>Solar Park Complex, Green Energy City</p>
+              <p>A/P: Bidal, Tal-Man,<br />
+              Dist-Satara, 415508<br />
+              Maharashtra, India</p>
             </div>
 
             <div className="contact-card">
@@ -71,7 +73,8 @@ const Contact = () => {
                 <FaPhone />
               </div>
               <h3>Contact Number</h3>
-              <p>+91 98765 43210</p>
+              <p>+91 7757050168</p>
+              <p>+91 9209768544</p>
             </div>
 
             <div className="contact-card">
@@ -79,23 +82,25 @@ const Contact = () => {
                 <FaEnvelope />
               </div>
               <h3>Email Address</h3>
-              <p>contact@vasundharasolar.com</p>
+              <p>evasundharasolar@gmail.com</p>
             </div>
 
             <div className="contact-card social-card">
               <h3>Follow Our Energy</h3>
               <div className="social-links">
-                <a href="#"><FaFacebook /></a>
-                <a href="#"><FaTwitter /></a>
+                <a href="https://www.instagram.com/vasundharasolar?igsh=MTgycmltbmppcjRmNA=="><FaFacebook /></a>
                 <a href="#"><FaLinkedin /></a>
-                <a href="#"><FaInstagram /></a>
+                <a href="https://www.instagram.com/vasundharasolar?igsh=MTgycmltbmppcjRmNA=="><FaInstagram /></a>
+                <a  href ="https://wa.me/917757050168?text=Hello%20I'm%20interested%20in%20your%20solar%20solutions.%20Please%20provide%20more%20information">
+                 <FaWhatsapp />
+                </a>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Form Section */}
+  {/* Contact Form Section */}
       <section className="contact-main">
         <div className="container">
           <div className="contact-grid">
@@ -171,24 +176,28 @@ const Contact = () => {
             </div>
 
             {/* Map Section */}
-            <div className="map-section">
-              <div className="map-container">
-                <iframe
-                  title="Solar Office Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.566722710678!2d77.23114131508217!3d28.61721338242485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce30c95555543%3A0x4893017a7f8d523d!2sSolar%20Energy%20Corporation%20of%20India!5e0!3m2!1sen!2sin!4v1659627191722!5m2!1sen!2sin"
-                  allowFullScreen=""
-                  loading="lazy"
-                ></iframe>
-              </div>
-              <div className="map-overlay">
-                <h3>Our Solar Office</h3>
-                <p>Visit us for a personalized consultation</p>
-                <div className="office-hours">
-                  <p>Mon-Fri: 8AM - 6PM</p>
-                  <p>Saturday: 9AM - 4PM</p>
-                </div>
-              </div>
-            </div>
+            {/* Map Section */}
+<div className="map-section">
+  <div className="map-container">
+    <iframe
+      title="Solar Office Location"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.566722710678!2d77.23114131508217!3d28.61721338242485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce30c95555543%3A0x4893017a7f8d523d!2sSolar%20Energy%20Corporation%20of%20India!5e0!3m2!1sen!2sin!4v1659627191722!5m2!1sen!2sin"
+      allowFullScreen=""
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+      style={{ border: 0 }}
+      aria-label="Company location map"
+    ></iframe>
+  </div>
+  <div className="map-overlay">
+    <h3>Our Solar Office</h3>
+    <p>Visit us for a personalized consultation</p>
+    <div className="office-hours">
+      <p>Mon-Fri: 8AM - 6PM</p>
+      <p>Saturday: 9AM - 4PM</p>
+    </div>
+  </div>
+</div>
           </div>
         </div>
       </section>
