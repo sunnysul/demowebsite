@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { FaChevronDown, FaTimes, FaBars } from 'react-icons/fa';
 import logo from "../logo/Vasundhara.png";
-import "../css/Header.css"
+import "../css/Header.css";
 
 const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -10,11 +10,9 @@ const Header = () => {
     const navRef = useRef(null);
     const dropdownRef = useRef(null);
 
-    const dropdownItems = [
-        { path: "/aboutus/principle", title: "Our Principles" },
-        { path: "/aboutus/promise", title: "Our Promise" },
-        { path: "/aboutus/vision", title: "Vision Mission" },
-        { path: "/aboutus/values", title: "Our Values" }
+    const servicesDropdownItems = [
+        { path: "/epc", title: "EPC" },
+        { path: "/consultancy", title: "Consultancy" }
     ];
 
     useEffect(() => {
@@ -51,14 +49,11 @@ const Header = () => {
     return (
         <header className="header" ref={navRef}>
             <nav className="nav container">
-                {/* Logo */}
                 <Link to="/" className="nav__logo" onClick={closeAllMenus}>
                     <img src={logo} alt="Vasundhara Solar Solutions" />
                 </Link>
 
-                {/* Desktop Navigation */}
                 <div className={`nav__menu ${isMobileMenuOpen ? 'show-menu' : ''}`}>
-                    {/* Close Button for Mobile */}
                     <button 
                         className="nav__close" 
                         onClick={closeAllMenus}
@@ -67,7 +62,6 @@ const Header = () => {
                         <FaTimes />
                     </button>
 
-                    {/* Navigation Links */}
                     <ul className="nav__list">
                         <li className="nav__item">
                             <Link to="/" className="nav__link" onClick={closeAllMenus}>
@@ -75,35 +69,43 @@ const Header = () => {
                             </Link>
                         </li>
 
-                        {/* About Us Dropdown */}
+                        <li className="nav__item">
+                            <Link to="/aboutus" className="nav__link" onClick={closeAllMenus}>
+                                About Us
+                            </Link>
+                        </li>
+
                         <li 
                             className="nav__item nav__dropdown"
-                            onMouseEnter={() => window.innerWidth > 768 && handleDropdownToggle('about')}
-                            onMouseLeave={() => window.innerWidth > 768 && handleDropdownToggle('about')}
+                            onMouseEnter={() => window.innerWidth > 768 && handleDropdownToggle('services')}
+                            onMouseLeave={() => window.innerWidth > 768 && handleDropdownToggle('services')}
                         >
                             <div className="nav__dropdown-header">
                                 <Link 
-                                    to="/aboutus" 
+                                    to="/service" 
                                     className="nav__link"
                                     onClick={closeAllMenus}
                                 >
-                                    About Us
+                                    Services
                                 </Link>
                                 <button
                                     className="nav__dropdown-trigger"
-                                    onClick={() => handleDropdownToggle('about')}
-                                    aria-expanded={activeDropdown === 'about'}
-                                    aria-label="Toggle dropdown"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        handleDropdownToggle('services');
+                                    }}
+                                    aria-expanded={activeDropdown === 'services'}
+                                    aria-label="Toggle services dropdown"
                                 >
-                                    <FaChevronDown className={`icon ${activeDropdown === 'about' ? 'rotate' : ''}`} />
+                                    <FaChevronDown className={`icon ${activeDropdown === 'services' ? 'rotate' : ''}`} />
                                 </button>
                             </div>
                             
                             <ul 
-                                className={`nav__submenu ${activeDropdown === 'about' ? 'show-dropdown' : ''}`}
+                                className={`nav__submenu ${activeDropdown === 'services' ? 'show-dropdown' : ''}`}
                                 ref={dropdownRef}
                             >
-                                {dropdownItems.map((item, index) => (
+                                {servicesDropdownItems.map((item, index) => (
                                     <li key={index} className="nav__subitem">
                                         <Link
                                             to={item.path}
@@ -117,8 +119,7 @@ const Header = () => {
                             </ul>
                         </li>
 
-                        {/* Other Navigation Items */}
-                        {['service', 'gallery', 'team', 'contact'].map((item) => (
+                        {['gallery', 'client','team', 'contact' ].map((item) => (
                             <li key={item} className="nav__item">
                                 <Link
                                     to={`/${item}`}
@@ -132,7 +133,6 @@ const Header = () => {
                     </ul>
                 </div>
 
-                {/* Mobile Menu Toggle */}
                 <button 
                     className="nav__toggle"
                     onClick={toggleMobileMenu}

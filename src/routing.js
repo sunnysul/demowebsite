@@ -10,7 +10,10 @@ import Services from "./components/Services";
 import AboutUs from "./components/AboutUs";
 import Gallery from "./components/Gallery";
 import TeamPage from "./components/TeamPage";
-import OurPrinciples from "./components/OurPrinciples";
+import EpcPage from "./components/EPCPage";
+import Clients from "./components/Clients";
+import ConsultancyPage from "./components/ConsultancyPage";
+
 
 
 const router = createBrowserRouter([
@@ -53,12 +56,19 @@ const router = createBrowserRouter([
             path: "/team",
             element : <TeamPage/>
            },
-        //    {
-        //     path :"/princliple",
-        //     element : <OurPrinciples/>
-        //    },
+           {
+            path: "/epc",
+            element : <EpcPage/>
+           },
 
-           
+           {
+            path: "/client",
+            element: <Clients/>
+           },
+           {
+            path : "/consultancy",
+            element : <ConsultancyPage/>
+           },
 
         ]
     }

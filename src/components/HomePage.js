@@ -26,8 +26,8 @@ import varroc from "../logo/varroc.png";
  import aurus from "../logo/auruspharma.png";
 
 import { 
-  FaSolarPanel, FaChevronDown, FaClipboard, FaEnvelope, 
-  FaUser, FaInstagram, FaLinkedin, FaTwitter, FaFacebook, 
+   FaChevronDown, FaClipboard, FaEnvelope, 
+  FaUser, FaFacebook, 
   FaPhone, FaMapMarkerAlt, FaComment, FaPaperPlane ,FaCheckCircle
 } from "react-icons/fa";
 

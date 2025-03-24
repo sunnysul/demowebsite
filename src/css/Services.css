@@ -161,44 +161,44 @@
 }
 
 /* Configuration Systems Section */
-.configuration-systems {
+/* .configuration-systems {
   padding: 6rem 0;
   background: #f8f9fa;
-}
+} */
 
-.systems-grid {
+/* .systems-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
   font-family: "Bree Serif", serif;
-}
+} */
 
-.system-image img {
+/* .system-image img {
   width: 100%;
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
+} */
 
-.systems-list {
+/* .systems-list {
   display: grid;
   gap: 2rem;
-}
+} */
 
-.system-card {
+/* .system-card {
   display: flex;
   align-items: center;
   padding: 2rem;
   background: white;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-}
+} */
 
-.system-icon {
+/* .system-icon {
   font-size: 1.8rem;
   color: #3498db;
   margin-right: 1.5rem;
-}
+} */
 
 /* Net Metering Section */
 .net-metering {

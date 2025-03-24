@@ -181,13 +181,16 @@ const Contact = () => {
   <div className="map-container">
     <iframe
       title="Solar Office Location"
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.566722710678!2d77.23114131508217!3d28.61721338242485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce30c95555543%3A0x4893017a7f8d523d!2sSolar%20Energy%20Corporation%20of%20India!5e0!3m2!1sen!2sin!4v1659627191722!5m2!1sen!2sin"
+      src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d408.01343000055226!2d74.52597183341226!3d17.752234396814178!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1742835995559!5m2!1sen!2sin"
       allowFullScreen=""
       loading="lazy"
       referrerPolicy="no-referrer-when-downgrade"
       style={{ border: 0 }}
       aria-label="Company location map"
     ></iframe>
+    {/* <iframe src="" 
+    width="600"
+     height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> */}
   </div>
   <div className="map-overlay">
     <h3>Our Solar Office</h3>

@@ -119,7 +119,7 @@ const Services = () => {
       </section>
 
       {/* Configuration Systems Section */}
-      <section className="configuration-systems">
+      {/* <section className="configuration-systems">
         <div className="container">
           <div className="section-header">
             <h2>System Configurations</h2>
@@ -143,7 +143,7 @@ const Services = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Net Metering Section */}
       <section className="net-metering">

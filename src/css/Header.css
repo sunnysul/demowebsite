@@ -218,3 +218,62 @@
 .nav__dropdown-trigger .icon {
   font-size: 1.2rem;
 }
+/* Ensure dropdown animations work properly */
+.nav__submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--header-bg);
+  min-width: 160px;
+  box-shadow: var(--shadow);
+  border-radius: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  padding: 0.5rem 0;
+  z-index: 1000;
+}
+
+/* Mobile dropdown specific styles */
+@media (max-width: 768px) {
+  .nav__submenu {
+    position: static;
+    box-shadow: none;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 1;
+    visibility: visible;
+    padding: 0;
+    transition: max-height 0.3s ease;
+  }
+
+  .nav__submenu.show-dropdown {
+    max-height: 500px;
+    margin-top: 0.5rem;
+    padding-left: 1.5rem;
+  }
+}
+/* Add to Header.css */
+.header {
+  z-index: 1000; /* Ensure this is higher than other elements */
+}
+
+/* Dropdown arrow alignment */
+.nav__dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Hover effects */
+.nav__sublink:hover {
+  background: rgba(0, 0, 0, 0.03);
+  color: var(--accent-color);
+  padding-left: 2rem;
+}
+
+@media (max-width: 768px) {
+  .nav__sublink:hover {
+    padding-left: 1.5rem;
+  }
+}
