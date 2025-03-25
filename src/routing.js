@@ -1,5 +1,5 @@
 import React, { Children } from "react";
-import { createBrowserRouter } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, BrowserRouter, createBrowserRouter } from 'react-router-dom';
 import App from "./App";
 
 import Header from "./components/Header";
@@ -25,53 +25,57 @@ const router = createBrowserRouter([
 
             {
                 path: "/header",
-                element: <Header/>
+                element: <Header />
             },
             {
                 path: "/footer",
-                element: <Footer/>
+                element: <Footer />
             },
             {
                 path: "/",
-                element: <HomePage/>
+                element: <HomePage />
             },
-           {
-            path: "/contact",
-            element: <Contact/>
-           },
-           {
-            path:  "/service",
-            element: <Services/>
-           },
-           {
-            path: "/aboutus",
-            element: <AboutUs/>
-           },
-          
-           {
-            path: "/gallery",
-            element : <Gallery/>
-           },
-           {
-            path: "/team",
-            element : <TeamPage/>
-           },
-           {
-            path: "/epc",
-            element : <EpcPage/>
-           },
+            {
+                path: "/contact",
+                element: <Contact />
+            },
+            {
+                path: "/service",
+                element: <Services />
+            },
+            {
+                path: "/aboutus",
+                element: <AboutUs />
+            },
 
-           {
-            path: "/client",
-            element: <Clients/>
-           },
-           {
-            path : "/consultancy",
-            element : <ConsultancyPage/>
-           },
+            {
+                path: "/gallery",
+                element: <Gallery />
+            },
+            {
+                path: "/team",
+                element: <TeamPage />
+            },
+            {
+                path: "/epc",
+                element: <EpcPage />
+            },
+
+            {
+                path: "/client",
+                element: <Clients />
+            },
+            {
+                path: "/consultancy",
+                element: <ConsultancyPage />
+            },
 
         ]
     }
 ])
 
 export default router;
+
+<BrowserRouter basename="/demowebsite">
+    {/* Your routes */}
+</BrowserRouter>
