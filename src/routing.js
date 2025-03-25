@@ -1,6 +1,7 @@
 import React, { Children } from "react";
 import { HashRouter as Router, Routes, Route, BrowserRouter, createBrowserRouter } from 'react-router-dom';
 import App from "./App";
+import ReactDOM from 'react-dom';
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -76,6 +77,9 @@ const router = createBrowserRouter([
 
 export default router;
 
-<BrowserRouter basename="/demowebsite">
-    {/* Your routes */}
-</BrowserRouter>
+ReactDOM.render(
+    <BrowserRouter basename="/demowebsite">
+        <App />
+    </BrowserRouter>,
+    document.getElementById('root')
+);
